@@ -18,7 +18,7 @@ double bannerheight(){
   if(isPhone){
     return 170;
   }else if(isTablet){
-    return 100;
+    return 200;
   }
   return 350;
 }

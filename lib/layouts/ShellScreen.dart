@@ -20,18 +20,21 @@ class Shellscreen extends StatelessWidget  {
     final String location = GoRouterState.of(context).matchedLocation;
 
     return Scaffold(
-
       // app bar propety
-
          appBar: AppBar(
           title: const Text(
             "Shoper",
             style: TextStyle(fontWeight:FontWeight.w900),
           ),
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Image.asset('assets/images/cart.png',height: 30,width: 30),
+            InkWell(
+              onTap: (){
+                context.push('/cart');
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: Image.asset('assets/images/cart.png',height: 30,width: 30),
+              ),
             ),
           ],
         ),
