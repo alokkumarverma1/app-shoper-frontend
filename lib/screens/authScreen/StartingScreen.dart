@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class Startingscreen extends StatelessWidget {
+
+class Startingscreen extends StatefulWidget {
   const Startingscreen({super.key});
+
+  @override
+  State<Startingscreen> createState() => _StartingscreenState();
+}
+
+
+class _StartingscreenState extends State<Startingscreen> {
+
+  @override
+  void initState(){
+    super.initState();
+    Future.delayed(Duration(seconds: 2),(){
+      context.replace('/');
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+        body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -16,7 +33,7 @@ class Startingscreen extends StatelessWidget {
 
               // Text("Shoper",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 50),),
               // SizedBox(height: 30,),
-               Container(
+              Container(
                 height: 100,
                 width: double.infinity,
                 child: ClipOval(
@@ -27,21 +44,10 @@ class Startingscreen extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              ElevatedButton(
-                  onPressed: (){
-                    context.push('/login');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    fixedSize: Size(100,40),
-                  ),
-                  child: Text("Start",style: TextStyle(color: Colors.black),)
-              )
-
 
             ],
           ),
-      )
+        )
     );
   }
 }

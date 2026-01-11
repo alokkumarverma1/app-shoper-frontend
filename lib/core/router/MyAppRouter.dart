@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shoper/app/service/AuthService.dart';
 import 'package:shoper/screens/authScreen/LoginScreen.dart';
 import 'package:shoper/screens/authScreen/RegisterScreen.dart';
 import 'package:shoper/screens/authScreen/StartingScreen.dart';
@@ -13,8 +14,21 @@ import 'package:shoper/layouts/ShellScreen.dart';
 
 
 final GoRouter myapprouter = GoRouter(
-  initialLocation: "/",
+  initialLocation: "/start",
   routes: [
+
+    GoRoute(
+        path: '/start',
+      builder: (context ,state) => Startingscreen(),
+    ),
+    GoRoute(
+      path: '/login',
+      builder: (context,state) => const Loginscreen(),
+    ),
+    GoRoute(
+      path: '/register',
+      builder: (context,state) => const Registerscreen(),
+    ),
 
     ShellRoute(
       builder: (context, state, child) {
@@ -32,6 +46,10 @@ final GoRouter myapprouter = GoRouter(
         GoRoute(
           path: '/shop',
           builder: (context, state) => const Shopscreen(),
+          redirect: (context ,state) async{
+           bool chek= await AuthService().islogin();
+           return chek ? null : '/login';
+          }
         ),
         GoRoute(
           path: '/setting',
@@ -49,18 +67,6 @@ final GoRouter myapprouter = GoRouter(
     GoRoute(
         path: '/cart',
       builder: (context ,state) => const Cartscreen(),
-    ),
-    GoRoute(
-        path: '/start',
-      builder: (context,state) => const Startingscreen(),
-    ),
-    GoRoute(
-      path: '/login',
-      builder: (context,state) => const Loginscreen(),
-    ),
-    GoRoute(
-      path: '/register',
-      builder: (context,state) => const Registerscreen(),
     ),
 
 
