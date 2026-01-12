@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SettingItems extends StatelessWidget {
   final String title;
   final IconData icon;
-  const SettingItems({super.key,required this.title,required this.icon});
+  final String routs;
+  const SettingItems({super.key,required this.title,required this.icon,required this.routs});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +14,7 @@ class SettingItems extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
           onTap: (){
+            context.push("$routs");
           },
           child:Container(
             height: 70,

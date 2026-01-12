@@ -7,6 +7,8 @@ import 'package:shoper/screens/authScreen/StartingScreen.dart';
 import 'package:shoper/screens/cartScreen/CartScreen.dart';
 import 'package:shoper/screens/homescreens/HomeScreen.dart';
 import 'package:shoper/screens/searchscreen/Search_Screen.dart';
+import 'package:shoper/screens/setting/MyShop.dart';
+import 'package:shoper/screens/setting/Profile.dart';
 import 'package:shoper/screens/shopscreen/ShopDetails.dart';
 import 'package:shoper/screens/shopscreen/ShopScreen.dart';
 import 'package:shoper/screens/setting/SettingScreen.dart';
@@ -58,16 +60,31 @@ final GoRouter myapprouter = GoRouter(
       ],
     ),
 
-   // add your other routs
-
+   // All shop page routs there
     GoRoute(
         path:'/shop/shopDetails',
       builder: (context ,state)=> const Shopdetails(),
     ),
     GoRoute(
+      path:'/myShop',
+      builder: (context ,state)=> const Myshop(),
+    ),
+
+
+
+    // all cart routs there
+    GoRoute(
         path: '/cart',
       builder: (context ,state) => const Cartscreen(),
     ),
+
+    // all setting routs
+    GoRoute(
+      path: '/profile',
+      builder: (context,state)=> Profile(),
+    ),
+
+
 
 
 

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shoper/core/thems/MyColors.dart';
 import 'package:shoper/core/router/MyAppRouter.dart';
 
 void main(){
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp(),));
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

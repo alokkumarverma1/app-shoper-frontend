@@ -1,9 +1,10 @@
+
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:shoper/core/model/RegisterModel.dart';
 import 'package:http/http.dart' as http;
+import '../model/RegisterModel.dart';
+
 
 class AuthService {
   final baseUrl = 'http://localhost:8080';
@@ -16,17 +17,27 @@ class AuthService {
     return res;
   }
 
-  Future<bool> userRegisterService(RegisterModel registerModel)async{
+  // register service method
+  Future<Map<String,dynamic>> userRegisterService(RegisterModel registerModel)async{
     final res =await http.post(
         Uri.parse("$baseUrl/register"),
         headers: {"Content-Type":"application/json"},
         body:jsonEncode(registerModel.getJson())
     );
-    print(res);
     if(res.statusCode == 200){
-      return true;
-    }
-   return false;
+      return {
+        'success': true,
+        'message': 'register success'
+      };
+    };
+
+    final data = jsonDecode(res.body);
+    return {
+      'success' : false,
+      'message': data['message'] ?? "registration failed"
+    };
+
+
   }
 
 

@@ -18,20 +18,20 @@ class Settingscreen extends StatelessWidget {
             Text("Profile",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
             SizedBox(height: 10,),
             
-            SettingItems(title: "Profile",icon: Icons.supervised_user_circle ,),
+            SettingItems(title: "Profile",icon: Icons.supervised_user_circle,routs:'/profile',),
             SizedBox(height: 10,),
-            SettingItems(title: "Orders",icon: Icons.card_travel,),
+            SettingItems(title: "Orders",icon: Icons.card_travel,routs: '/profile',),
             SizedBox(height: 10,),
-            SettingItems(title: "My Shop",icon: Icons.shop,),
+            SettingItems(title: "My Shop",icon: Icons.shop,routs: '/myShop',),
 
             // more setting items
             SizedBox(height: 15,),
             Text("More",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
             SizedBox(height: 15,),
 
-            SettingItems(title: "App Setting",icon: Icons.supervised_user_circle ,),
+            SettingItems(title: "App Setting",icon: Icons.supervised_user_circle ,routs: '/profile',),
             SizedBox(height: 10,),
-            SettingItems(title: "Privacy",icon: Icons.card_travel,),
+            SettingItems(title: "Privacy",icon: Icons.card_travel,routs: '/profile',),
             SizedBox(height: 10,),
 
             // support section
@@ -39,9 +39,9 @@ class Settingscreen extends StatelessWidget {
             Text("Support",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
             SizedBox(height: 15,),
 
-            SettingItems(title: "Contact Us",icon: Icons.supervised_user_circle ,),
+            SettingItems(title: "Contact Us",icon: Icons.supervised_user_circle ,routs: '/profile',),
             SizedBox(height: 10,),
-            SettingItems(title: "About Us",icon: Icons.card_travel,),
+            SettingItems(title: "About Us",icon: Icons.card_travel,routs: '/profile',),
             SizedBox(height: 10,),
 
 

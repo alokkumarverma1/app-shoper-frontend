@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shoper/app/controller/AuthController.dart';
-import 'package:shoper/core/model/RegisterModel.dart';
+import 'package:shoper/app/provider/AuthProvider.dart';
+import 'package:shoper/app/state/AuthState.dart';
 import 'package:shoper/core/responcive/Responcive_design.dart';
+import 'package:shoper/widget/extra/Popup.dart';
+import '../../app/model/RegisterModel.dart';
 
 
-class Registerscreen extends StatefulWidget {
+
+class Registerscreen extends ConsumerStatefulWidget {
   const Registerscreen({super.key});
 
   @override
-  State<Registerscreen> createState() => _RegisterscreenState();
+  ConsumerState<Registerscreen> createState() => _RegisterscreenState();
 }
 
-class _RegisterscreenState extends State<Registerscreen> {
+class _RegisterscreenState extends ConsumerState<Registerscreen> {
 
   // form controllet
 final key = GlobalKey<FormState>();
@@ -26,6 +30,18 @@ final repassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final authpro = ref.watch(authNotifierProvider);
+    ref.listen<AuthState>(authNotifierProvider, (previous ,next){
+      showDialog(
+          context: context,
+          builder: (_)=> Popup(title: next.message, icon: Icons.error)
+      );
+      Future.delayed(Duration(seconds: 2));
+       if(next.success){
+         return context.go('/');
+       }
+       Popup(title: next.message,icon: Icons.cancel,);
+    });
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
@@ -158,24 +174,30 @@ final repassword = TextEditingController();
                         // summit button
                        SizedBox(height: 20,),
                         ElevatedButton(
-                            onPressed: () {
-                             final registerdata = RegisterModel(
+                            onPressed: () async{
+                              if(!key.currentState!.validate()){
+                                return;
+                              }
+                             final registerData = RegisterModel(
                                  name: name.text,
                                  number:int.parse(number.text),
                                  mail: mail.text,
                                location: location.text,
                                  password: password.text,
                              );
-                            AuthController().registerController(registerdata);
+                            final res =await ref.read(authNotifierProvider.notifier).register(registerData);
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
                               shadowColor: Colors.black,
                               fixedSize: Size(140, 37)
                             ),
-                            child: Text("Register",style: TextStyle(color: Colors.black),)
+                            child:authpro.loading ? SizedBox(height: 30,width: 30,child: CircularProgressIndicator(color: Colors.black,strokeWidth: 3,),) :  Text("Register",style: TextStyle(color: Colors.black),)
                         ),
 
+
+
+                        // other data
                         InkWell(
                           onTap: (){
                             context.push('/login');
@@ -210,7 +232,7 @@ final repassword = TextEditingController();
                        },
                        child: Image.asset('assets/images/facebook.png',height: 40,width: 40,),
                      ),
-                     
+
                    ],
                  ),
                ),
