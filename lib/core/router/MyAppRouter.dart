@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:shoper/app/service/AuthService.dart';
+import 'package:shoper/app/state/AuthSecureStorage.dart';
 import 'package:shoper/screens/authScreen/LoginScreen.dart';
 import 'package:shoper/screens/authScreen/RegisterScreen.dart';
 import 'package:shoper/screens/authScreen/StartingScreen.dart';
@@ -49,8 +51,11 @@ final GoRouter myapprouter = GoRouter(
           path: '/shop',
           builder: (context, state) => const Shopscreen(),
           redirect: (context ,state) async{
-           bool chek= await AuthService().islogin();
-           return chek ? null : '/login';
+           final chek= await AuthSecureStorage().getToken();
+            if(chek == null || Jwt.isExpired(chek)){
+              return '/login';
+            }
+            return null;
           }
         ),
         GoRoute(

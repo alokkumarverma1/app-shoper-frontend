@@ -192,8 +192,8 @@ final repassword = TextEditingController();
                               shadowColor: Colors.black,
                               fixedSize: Size(140, 37)
                             ),
-                            child:authpro.loading ? SizedBox(height: 30,width: 30,child: CircularProgressIndicator(color: Colors.black,strokeWidth: 3,),) :  Text("Register",style: TextStyle(color: Colors.black),)
-                        ),
+                          child: Text("Register"),
+                           ),
 
 
 
