@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoper/widget/reusabel/ShopItems.dart';
+import 'package:shoper/widget/reusabel/MyShopProducts.dart';
 import '../../core/responcive/Responcive_design.dart';
 
 class Shopscreen extends StatelessWidget {
@@ -55,9 +55,7 @@ class Shopscreen extends StatelessWidget {
           SliverGrid(
               delegate: SliverChildListDelegate(
                 [
-                  Shopitems(),
-                  Shopitems(),
-                  Shopitems(),
+
                 ]
               ),
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

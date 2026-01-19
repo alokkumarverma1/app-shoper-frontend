@@ -13,79 +13,102 @@ class Shopdetails extends StatelessWidget {
         appBar: AppBar(
 
         ),
-
       // body
-
       body: SafeArea(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.only(top: 10,left: 10,right: 10),
-            child: Stack(
-              children: [
-                Column(
-                children: [
+         child: CustomScrollView(
+           slivers: [
 
-                  Container(
-                    height: 200,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+             // shop header item
+             SliverToBoxAdapter(
+               child: Container(
+                 height: 200,
+                 width: ResponciveDesign(context).searchFieldWidht(),
+                 decoration: BoxDecoration(
+                     borderRadius: BorderRadius.circular(20),
+                     boxShadow: [
+                       BoxShadow(
+                         color: Colors.black.withOpacity(0.15), // halka black
+                         blurRadius: 8,
+                         spreadRadius: 1,
+                         offset: Offset(0, 3), // neeche shadow
+                       ),
+                     ],
+                     color: Colors.white
+                 ),
+                 child:Center(
+                     child: Column(
+                       mainAxisAlignment: MainAxisAlignment.center,
+                       children: [
+                         Container(
+                           height: 100,
+                           width: 100,
+                           decoration: BoxDecoration(
+                               shape: BoxShape.circle,
+                               color: Colors.grey
+                           ),
+                           child: Column(
+                             children: [
+                               Container(
+                                 height:100,
+                                 width: 100,
+                                 decoration: BoxDecoration(
+                                     shape: BoxShape.circle
+                                 ),
+                                 child: Stack(
+                                   children: [
+                                     Positioned(
+                                       child: Icon(Icons.message),
+                                       top: 70,
+                                       left: 0,
+                                     )
+                                   ],
+                                 ),
+                               )
+                             ],
+                           ),
+                         ),
+                         Text("shop name",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                         Text("shop name"),
+                       ],
+                     )
+                 ),
+               ),
+             ),
 
-                        // profile
+             // search item in my shop
 
-                        Container(
-                          height:120,
-                          width: 120,
-                          decoration: BoxDecoration(
-                            color: Colors.black12,
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        // details of data
-                        Text("Name Of SHop",style: TextStyle(fontWeight: FontWeight.bold),),
-                        Text("location of shop"),
+             SliverToBoxAdapter(
+               child: Container(
+                 height: 40,
+                 width: 30,
+                 margin: EdgeInsets.only(top: 20),
+                 decoration: BoxDecoration(
+                     boxShadow: [
+                       BoxShadow(
+                         color: Colors.black.withOpacity(0.15), // halka black
+                         blurRadius: 8,
+                         spreadRadius: 1,
+                         offset: Offset(0, 3), // neeche shadow
+                       ),
+                     ]
+                 ),
+                 child: Form(
+                   child: TextFormField(
+                     decoration: InputDecoration(
+                         prefixIcon: Icon(Icons.search),
+                         suffixIcon: Icon(Icons.list),
+                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(15),borderSide: BorderSide.none),
+                         hintText: "search",
+                         filled: true,
+                         fillColor: Colors.white
+                     ),
+                   ),
+                 ),
+               ),
+             )
 
-                      ],
-                    ),
-                  ),
-
-                  // all categry of shop
-
-                  Center(
-                    child: Text("All category",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
-                  ),
-                  SizedBox(
-                    height: ResponciveDesign(context).homeItemHeight() + 20,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        for(int a=1; a<10;a++)
-                          CategryItems(),
-                      ],
-                    ),
-                  ),
-
-
-                  // all latest product add in this shop
-
-
-
-
-
-
-
-                ],
-              ),
-            ],
-            ),
-          )
+           ],
+         ),
       ),
     );
   }

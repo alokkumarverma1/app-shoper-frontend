@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shoper/core/thems/MyColors.dart';
 
 class SettingItems extends StatelessWidget {
   final String title;
@@ -21,9 +22,9 @@ class SettingItems extends StatelessWidget {
             padding: EdgeInsets.all(10),
             child: Row(
               children: [
-                Icon(icon,),
+                Icon(icon,color: Mycolors.buttons,),
                 SizedBox(width: 10,),
-                Text("$title",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),)
+                Text("$title",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15),)
               ],
             ),
           )

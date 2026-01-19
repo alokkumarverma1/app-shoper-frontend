@@ -5,7 +5,7 @@ import 'package:shoper/app/service/UserService.dart';
 import 'package:shoper/app/state/UserState.dart';
 
 final userServiceProvider = Provider((ref){
-  return UserState();
+  return Userservice();
 });
 
 
@@ -14,6 +14,7 @@ class UserProvider extends Notifier<UserState>{
   late final Userservice userService;
   @override
   UserState build() {
+    userService = ref.read(userServiceProvider);
     return UserState();
   }
 
@@ -21,15 +22,15 @@ class UserProvider extends Notifier<UserState>{
 Future<void> userDetails()async{
  try{
    final res = await userService.userDetails();
-   final UserModel userModel = UserModel(name: res["name"], number: res["number"], mail:res["mail"], location: res["location"]);
+   final UserModel userModel = UserModel(name: res["user"]["name"], number:res["user"]["number"], mail:res["user"]["mail"], location: res["user"]["location"]);
    state = state.copyWith(userModel:userModel);
  }catch(e){
    state = state.copyWith(message:e.toString());
  }
 }
 
-final userProvider = NotifierProvider<UserProvider,UserState>(UserProvider.new);
 
 
 
 }
+final userProvider = NotifierProvider<UserProvider,UserState>(UserProvider.new);

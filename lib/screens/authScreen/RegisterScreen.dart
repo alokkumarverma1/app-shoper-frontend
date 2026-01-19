@@ -30,7 +30,7 @@ final repassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final authpro = ref.watch(authNotifierProvider);
+
     ref.listen<AuthState>(authNotifierProvider, (previous ,next){
       showDialog(
           context: context,
@@ -38,7 +38,7 @@ final repassword = TextEditingController();
       );
       Future.delayed(Duration(seconds: 2));
        if(next.success){
-         return context.go('/');
+         return context.go('/login');
        }
        Popup(title: next.message,icon: Icons.cancel,);
     });

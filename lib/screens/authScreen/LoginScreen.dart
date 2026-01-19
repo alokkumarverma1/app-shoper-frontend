@@ -29,12 +29,11 @@ class _LoginscreenState extends ConsumerState<Loginscreen> {
             context: context,
             builder: (_) => Popup(title:next.message ,icon: Icons.bolt,) );
         Future.delayed(const Duration(seconds: 2),(){
-          return context.go('/');
+          return context.replace('/');
         });
-      }else{
-        showDialog(
-            context: context,
-            builder: (_) => Popup(title:next.message ,icon: Icons.cut,) );
+      }
+      if(next.success == false){
+        showDialog(context: context, builder: (_)=> Popup(title: next.message, icon: Icons.cut));
       }
     });
     return Scaffold(

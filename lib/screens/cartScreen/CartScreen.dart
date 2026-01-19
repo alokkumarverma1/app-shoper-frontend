@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoper/widget/reusabel/CartItems.dart';
-import 'package:shoper/widget/reusabel/ShopItems.dart';
+import 'package:shoper/widget/reusabel/MyShopProducts.dart';
 
 class Cartscreen extends StatelessWidget {
   const Cartscreen({super.key});

@@ -1,37 +1,21 @@
 import 'package:flutter/material.dart';
 
-class Myshop extends StatefulWidget {
-  const Myshop({super.key});
+class AppSetting extends StatelessWidget {
+  const AppSetting({super.key});
 
-  @override
-  State<Myshop> createState() => _MyshopState();
-}
-
-class _MyshopState extends State<Myshop> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:SafeArea(
+      appBar: AppBar(),
+      body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               children: [
 
-
-
-
-
-
-
-
-
-
-
-
-
               ],
             ),
-          )
-      )
+          ),
+      ),
     );
   }
 }

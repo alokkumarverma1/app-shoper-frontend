@@ -10,7 +10,7 @@ class Popup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('$title'),
+      title: Text('$title',style: TextStyle(fontSize: 20),),
       icon: Icon(icon),
       backgroundColor: Colors.white,
       actions: [

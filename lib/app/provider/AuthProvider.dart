@@ -18,11 +18,16 @@ final loadingProvider = Provider((ref){
 });
 // this is auth provider
 class AuthProvider extends Notifier<AuthState>{
+
+
   late final AuthService authService;
    late final AuthSecureStorage authSecureStorage;
+
+
   @override
   AuthState build() {
    authService = ref.read(authServiceProvider);
+   authSecureStorage = AuthSecureStorage();
    return AuthState();
   }
 

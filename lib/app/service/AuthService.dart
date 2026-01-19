@@ -9,7 +9,6 @@ import '../model/RegisterModel.dart';
 
 class AuthService {
   final baseUrl = 'http://localhost:8080';
-  final storage = FlutterSecureStorage();
 
   // register service method
   Future<Map<String,dynamic>> userRegisterService(RegisterModel registerModel)async{
@@ -40,10 +39,10 @@ class AuthService {
          body: jsonEncode(loginModel.getJson()),
        );
        final data = jsonDecode(res.body);
-       print(data["token"]);
        if(res.statusCode == 200){
          return{
            "success": true,
+           "token" :data["token"],
            'message': data['message'] ?? "login success",
            'data' : data,
          };

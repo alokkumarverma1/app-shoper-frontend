@@ -15,6 +15,9 @@ class MyApp extends StatelessWidget {
       routerConfig: myapprouter,
       theme: ThemeData(
         scaffoldBackgroundColor: Mycolors.myapp,
+        appBarTheme: AppBarTheme(
+          backgroundColor:Mycolors.myapp ,
+        )
       ),
       debugShowCheckedModeBanner: false,
       scrollBehavior: MaterialScrollBehavior().copyWith(

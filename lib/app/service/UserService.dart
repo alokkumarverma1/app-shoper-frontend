@@ -9,10 +9,11 @@ import 'package:shoper/app/state/AuthSecureStorage.dart';
 class Userservice {
 
   final baseUrl = 'http://localhost:8080';
-  final token = AuthSecureStorage().getToken();
+
 
   // user profile service
   Future<Map<String,dynamic>> userDetails()async{
+    final token =await AuthSecureStorage().getToken();
   try{
     final res = await http.get(Uri.parse("$baseUrl/userDetails"),
         headers: {"Authorization" : "Bearer $token"}

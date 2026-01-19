@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shoper/core/thems/MyColors.dart';
 
 class Shellscreen extends StatelessWidget  {
   final Widget child;
@@ -44,6 +45,8 @@ class Shellscreen extends StatelessWidget  {
 
       // bottom navigation property
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Mycolors.buttons,
+          unselectedItemColor: Colors.grey.shade600,
           type: BottomNavigationBarType.fixed,
           currentIndex: getindex(location),
           onTap: (index){
@@ -53,7 +56,7 @@ class Shellscreen extends StatelessWidget  {
             if(index ==3) context.go('/setting');
           },
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home",),
+            BottomNavigationBarItem(icon: Icon(Icons.home,), label: "Home",),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search",),
             BottomNavigationBarItem(icon: Icon(Icons.shop), label: "Shop",),
             BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting",),
