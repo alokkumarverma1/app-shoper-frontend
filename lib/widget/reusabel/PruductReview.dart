@@ -6,6 +6,7 @@ class ProductReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 300,
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white,

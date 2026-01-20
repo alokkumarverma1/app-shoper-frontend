@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shoper/app/provider/ShopProvider.dart';
-import 'package:shoper/app/state/ShopState.dart';
+import 'package:shoper/app/provider/UserShopProvider.dart';
+import 'package:shoper/app/state/UserShopState.dart';
 import 'package:shoper/core/responcive/Responcive_design.dart';
 import 'package:shoper/core/thems/MyColors.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:shoper/app/provider/ShopProductProvider.dart';
+import 'package:shoper/app/provider/UserShopProductProvider.dart';
 import 'package:shoper/widget/reusabel/MyShopProducts.dart';
 import '../../../core/responcive/Responcive_design.dart';
 

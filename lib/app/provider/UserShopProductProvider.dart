@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shoper/app/model/AddProductModel.dart';
-import 'package:shoper/app/service/ShopProductService.dart';
-import 'package:shoper/app/state/ShopProductState.dart';
+import 'package:shoper/app/service/UserShopProductService.dart';
+import 'package:shoper/app/state/UserShopProductState.dart';
 
 final shopProductService = Provider((ref) {
   return ShopProductService();

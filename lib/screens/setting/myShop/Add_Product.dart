@@ -2,8 +2,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shoper/app/provider/ShopProductProvider.dart';
-import 'package:shoper/app/state/ShopProductState.dart';
+import 'package:shoper/app/provider/UserShopProductProvider.dart';
+import 'package:shoper/app/state/UserShopProductState.dart';
 import 'package:shoper/core/responcive/Responcive_design.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:typed_data';

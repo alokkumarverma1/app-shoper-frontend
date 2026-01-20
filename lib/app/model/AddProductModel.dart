@@ -23,7 +23,7 @@ class AddProductModel {
      this.createdAt,
   });
 
-  // 🔹 JSON → Model
+
   factory AddProductModel.fromJson(Map<String, dynamic> json) {
     return AddProductModel(
       id: json["id"],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shoper/app/state/AuthSecureStorage.dart';
 import 'package:shoper/widget/reusabel/Setting_items.dart';
 
 
@@ -51,7 +53,10 @@ class Settingscreen extends StatelessWidget {
              elevation: 3,
              borderRadius: BorderRadius.circular(20),
              child: InkWell(
-               onTap: (){},
+               onTap: ()async{
+                 await AuthSecureStorage().deleteToken();
+                 context.go('/login');
+               },
                child: Container(
                  height: 60,
                  child: Center(

@@ -80,7 +80,7 @@ class ContactUs extends StatelessWidget {
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: "Your Name",
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon: Icon(Icons.person,color: Mycolors.buttons,),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide.none,
@@ -93,7 +93,7 @@ class ContactUs extends StatelessWidget {
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: "Your Email",
-                      prefixIcon: Icon(Icons.email),
+                      prefixIcon: Icon(Icons.email,color: Mycolors.buttons,),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide.none,
@@ -164,7 +164,7 @@ class ContactUs extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, size: 28, color: Colors.black),
+          Icon(icon, size: 28, color: Mycolors.buttons),
           const SizedBox(width: 15),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

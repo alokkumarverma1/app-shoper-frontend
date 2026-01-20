@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shoper/app/model/AddProductModel.dart';
-import 'package:shoper/app/provider/ShopProductProvider.dart';
-import 'package:shoper/app/state/ShopProductState.dart';
+import 'package:shoper/app/provider/UserShopProductProvider.dart';
+import 'package:shoper/app/state/UserShopProductState.dart';
 import 'package:shoper/core/responcive/Responcive_design.dart';
 import 'package:shoper/widget/extra/Popup.dart';
 
@@ -21,7 +21,7 @@ class MyShopProducts extends ConsumerStatefulWidget{
 
 class _MyShopProductsState extends ConsumerState<MyShopProducts> {
 
-  int? textCount;
+  double? textCount;
 
 
   @override
@@ -29,9 +29,11 @@ class _MyShopProductsState extends ConsumerState<MyShopProducts> {
     final changeWidth = MediaQuery.of(context).size.width;
     Uint8List imageBytes = base64Decode(widget.product.productImage);
     if(changeWidth <= 350){
-      textCount = 10;
+      textCount = 120;
     }else if(changeWidth <= 700){
-      textCount = 40;
+      textCount = 200;
+    }else{
+      textCount = 500;
     }
     ref.listen<ShopProductState>(addProductNotifier, (previous,next){
       if(next.deleteProduct == true){
@@ -78,32 +80,35 @@ class _MyShopProductsState extends ConsumerState<MyShopProducts> {
 
               // product details
               SizedBox(width: 10,),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(widget.product.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
-                  Text("${widget.product.details.substring(0,textCount)} ..."),
-                  SizedBox(height: 3,),
-                  Row(
-                    spacing: 10,
-                    children: [
-                      Text("₹${widget.product.price.toString()}"),
-                      Container(
-                          height: 20,
-                          width: 70,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Colors.green.shade200
-                          ),
-                          child: Center(
-                            child: Text("${widget.product.discount.toString()} %OFF"),
-                          )
-                      )
-                    ],
-                  )
+              Container(
+                width:textCount,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(widget.product.name,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15)),
+                    Text(widget.product.details,overflow: TextOverflow.ellipsis),
+                    SizedBox(height: 3,),
+                    Row(
+                      spacing: 10,
+                      children: [
+                        Text("₹${widget.product.price.toString()}"),
+                        Container(
+                            height: 20,
+                            width: 60,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.green.shade200
+                            ),
+                            child: Center(
+                              child: Text("${widget.product.discount.toString()} %OFF"),
+                            )
+                        )
+                      ],
+                    )
 
-                ],
+                  ],
+                ),
               ),
 
               Spacer(),

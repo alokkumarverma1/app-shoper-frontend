@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shoper/app/model/ShopModel.dart';
-import 'package:shoper/app/provider/ShopProvider.dart';
-import 'package:shoper/app/state/ShopState.dart';
+import 'package:shoper/app/provider/UserShopProvider.dart';
+import 'package:shoper/app/state/UserShopState.dart';
 import 'package:shoper/widget/extra/Popup.dart';
 import '../../../core/responcive/Responcive_design.dart';
 
@@ -121,7 +121,7 @@ class _CreateshopState extends ConsumerState<Createshop> {
                                 if(!key.currentState!.validate()){
                                   return ;
                                 }
-                                ShopModel shopModel = ShopModel(shopName:shopName.text, number: 0, mail: "", location: location.text);
+                                ShopModel shopModel = ShopModel(shopName:shopName.text, number: 0, email: "", location: location.text,);
                                await ref.read(shopNotifierProvider.notifier).createShop(shopModel);
                                 },
                                 style: ElevatedButton.styleFrom(

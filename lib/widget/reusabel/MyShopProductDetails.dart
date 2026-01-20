@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shoper/app/model/AddProductModel.dart';
 import 'package:shoper/core/responcive/Responcive_design.dart';
+import 'package:shoper/core/thems/MyColors.dart';
 import 'package:shoper/widget/reusabel/PruductReview.dart';
 
 class MyShopProductDetails extends StatelessWidget {
@@ -56,18 +57,15 @@ class MyShopProductDetails extends StatelessWidget {
               ),
 
               SizedBox(height: 20),
-
               Text(
                 addProductModel.name,
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
 
               SizedBox(height: 10),
-
-              // ✅ Product Category & Brand
               Row(
                 children: [
                   if (addProductModel.category.isNotEmpty)
@@ -85,22 +83,18 @@ class MyShopProductDetails extends StatelessWidget {
               ),
 
               SizedBox(height: 15),
-
-              // ✅ Product Details / Description
               Text(
                 addProductModel.details,
                 style: TextStyle(fontSize: 16, color: Colors.grey[800], height: 1.4),
               ),
 
               SizedBox(height: 20),
-
-              // ✅ Price & Discount
               Row(
                 children: [
                   Text(
                     "₹${addProductModel.price}",
                     style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.lineThrough,
                       color: Colors.black87,
@@ -135,7 +129,6 @@ class MyShopProductDetails extends StatelessWidget {
               ),
               SizedBox(height: 10),
 
-              // ✅ Stock / Availability
               Text(
                 addProductModel.productCount > 0
                     ? "In Stock: ${addProductModel.productCount}"
@@ -147,33 +140,93 @@ class MyShopProductDetails extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 20),
-
-         // this is reviews area
-            Center(
-              child: Text("All Reviews",style: TextStyle(fontWeight: FontWeight.w700),),
+          // add in cart and bay button
+              SizedBox(height: 20,),
+          Container(
+            child: Row(
+              spacing: 10,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton.icon(onPressed: (){},icon: Icon(Icons.shopping_cart,color: Mycolors.buttons,),style: ElevatedButton.styleFrom(backgroundColor: Colors.white), label: Text("Add cart",style: TextStyle(color: Colors.black),)),
+                ElevatedButton.icon(onPressed: (){},icon: Icon(Icons.shopping_cart_checkout,color: Mycolors.buttons,),style: ElevatedButton.styleFrom(backgroundColor: Colors.white), label: Text("Bay",style: TextStyle(color: Colors.black),)),
+              ],
             ),
-              SizedBox(height: 20),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 300,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 1/0.7
-              ),
-            itemCount: 20,
-            itemBuilder: (BuildContext context, int index) {
-                return ProductReview();
-            },
           ),
-              SizedBox(height: 100,),
 
+               _middleText("All Reviews"),
+               SizedBox(
+                 height: 200,
+                 child: GridView.builder(
+                   shrinkWrap: true,
+                   scrollDirection: Axis.horizontal,
+                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                       maxCrossAxisExtent: 400,
+                       crossAxisSpacing: 10,
+                       mainAxisSpacing: 10,
+                   ),
+                   itemCount: 20,
+                   itemBuilder: (BuildContext context, int index) {
+                     return ProductReview();
+                   },
+                 ),
+               ),
+              // add review
+              SizedBox(height: 100,width: double.infinity,),
+               _middleText("Add Review"),
+              Container(
+                width: double.infinity,
+               child: Form(
+                   child: Column(
+                     children: [
+                       Container(
+                         width: ResponciveDesign(context).searchFieldWidht(),
+                         decoration: BoxDecoration(
+                           boxShadow: [
+                             BoxShadow(
+                               color: Colors.black.withOpacity(0.2),
+                               blurRadius: 8,
+                               offset: Offset(0, 4),
+                             ),
+                           ],
+                         ),
+                         child: TextFormField(
+                           maxLines: 3,
+                           decoration: InputDecoration(
+                             hintText: "Add review",
+                             prefixIcon: Icon(Icons.add),
+                             border: OutlineInputBorder(
+                               borderRadius: BorderRadius.circular(20),
+                               borderSide: BorderSide.none,
+                             ),
+                             filled: true,
+                             fillColor: Colors.white,
+                           ),
+                         ),
+                       ),
+
+                       SizedBox(height: 30,),
+                       ElevatedButton.icon(onPressed: (){},style: ElevatedButton.styleFrom(backgroundColor: Colors.white),label: Text("Add",style: TextStyle(color: Colors.black),),)
+                     ],
+                   )
+               ),
+              ),
+
+              SizedBox(height: 30,),
             ],
           ),
         ),
       ),
     );
   }
+
+  // top heading
+Widget _middleText(String heading){
+    return Container(
+      margin: EdgeInsets.all(20),
+      child: Center(
+        child: Text(heading,style: TextStyle(fontWeight: FontWeight.w600),),
+      ),
+    );
+}
+
 }

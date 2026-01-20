@@ -74,7 +74,6 @@ Future<Map<String,dynamic>> deleteProduct(int id)async{
      );
      final data = jsonDecode(res.body);
      if(res.statusCode == 200){
-       print(data["message"]);
        return{
          "response" : "delete success",
          "message":data["message"],

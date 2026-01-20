@@ -180,12 +180,12 @@ class _Feature extends StatelessWidget {
           const Icon(
             Icons.check_circle,
             size: 18,
-            color: Mycolors.buttons, // ✅ same color for all icons
+            color: Mycolors.buttons,
           ),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
-              text, // ✅ text now visible
+              text,
               style: const TextStyle(
                 fontSize: 16,
                 height: 1.4,

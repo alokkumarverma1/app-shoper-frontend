@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shoper/app/model/AddProductModel.dart';
 import 'package:shoper/app/model/ShopModel.dart';
-import 'package:shoper/app/service/ShopService.dart';
-import 'package:shoper/app/state/ShopState.dart';
+import 'package:shoper/app/service/UserShopService.dart';
+import 'package:shoper/app/state/UserShopState.dart';
 import 'package:shoper/screens/setting/myShop/MyShop.dart';
 
 
@@ -26,7 +26,7 @@ Future<void> getShop()async{
      final res = await shopService.getShop();
      if(res["message"] == "shop find success"){
        final data = res["data"];
-       ShopModel shopModel = ShopModel(shopName: data["shopName"], number:data["number"], mail: data["email"], location: data["location"]);
+       ShopModel shopModel = ShopModel(shopName: data["shopName"], number:data["number"], email: data["email"], location: data["location"],category: data["category"]);
        state = state.copyWith(myShop: true,shopModel: shopModel);
      }else{
        state = state.copyWith(myShop: false);
